@@ -8,9 +8,9 @@ import './../styles.css';
 
 export const App = () => {
   const values = useMemo(() => {
-    return observe<TExpressionItem>({
-      type: observe('number'),
-      value: observe(123),
+    return observe<TExpressionItem<'text'>>({
+      type: observe('text'),
+      value: observe('123'),
     });
   }, []);
 
