@@ -1,12 +1,18 @@
 import { useMemo } from 'react';
 import { DragAndDropProvider } from 'react-use-drag-and-drop';
+import { observe } from 'react-observing';
 
-import { ExpressionEditor } from 'expression-editor/src';
+import { ExpressionEditor, TExpressionItem } from 'expression-editor/src';
 import './../styles.css';
 
 
 export const App = () => {
-  const values = useMemo(() => '', []);
+  const values = useMemo(() => {
+    return observe<TExpressionItem>({
+      type: observe('number'),
+      value: observe(123),
+    });
+  }, []);
 
 
   return (
@@ -16,7 +22,7 @@ export const App = () => {
         <div className='p-2 flex flex-col gap-2'>
           Expression editor
 
-          <div className='w-[60vw] h-[90vh] bg-background rounded overflow-clip'>
+          <div className='w-[60vw] h-[90vh] bg-background rounded overflow-clip p-2'>
             <ExpressionEditor
               value={values}
             />
