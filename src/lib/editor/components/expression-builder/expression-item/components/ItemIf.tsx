@@ -17,10 +17,6 @@ export const ItemIf = ({ value: valueObservable, level }: IItemIfProps) => {
     return level * 4;
   }, [level]);
 
-  const paddingLeftValues = useMemo(() => {
-    return level + 16;
-  }, [level]);
-
 
   return (
     <div
@@ -30,11 +26,11 @@ export const ItemIf = ({ value: valueObservable, level }: IItemIfProps) => {
         <span className='pointer-events-none text-pink-500'>if</span>
         <ExpressionItem item={value[0]} level={level + 1} />
       </div>
-      <div className='flex gap-1' style={{ paddingLeft: paddingLeftValues }}>
+      <div className='flex gap-1' style={{ paddingLeft }}>
         <span className='pointer-events-none text-pink-500'>then</span>
         <ExpressionItem item={value[1]} level={level + 1} />
       </div>
-      <div className='flex gap-1' style={{ paddingLeft: paddingLeftValues }}>
+      <div className='flex gap-1' style={{ paddingLeft }}>
         <span className='pointer-events-none text-pink-500'>else</span>
         <ExpressionItem item={value[2]} level={level + 1} />
       </div>
