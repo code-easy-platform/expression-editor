@@ -1,11 +1,12 @@
 import { useObserverValue } from 'react-observing';
 
-import { TExpressionItem, TExpressionItemBoolean, TExpressionItemConcat, TExpressionItemNumber, TExpressionItemText, TExpressionItemTypes, TExpressionItemUndefined } from '../../../types';
+import { TExpressionItem, TExpressionItemBoolean, TExpressionItemConcat, TExpressionItemIf, TExpressionItemNumber, TExpressionItemText, TExpressionItemTypes, TExpressionItemUndefined } from '../../../types';
 import { ItemUndefined } from './components/ItemUndefined';
 import { ItemBoolean } from './components/ItemBoolean';
 import { ItemNumber } from './components/ItemNumber';
 import { ItemConcat } from './components/ItemConcat';
 import { ItemText } from './components/ItemText';
+import { ItemIf } from './components/ItemIf';
 
 
 interface IExpressionItemProps {
@@ -23,6 +24,7 @@ export const ExpressionItem = ({ item, level }: IExpressionItemProps) => {
       {type === 'boolean' && <ItemBoolean value={item as TExpressionItemBoolean} />}
       {type === 'undefined' && <ItemUndefined value={item as TExpressionItemUndefined} />}
       {type === 'concat' && <ItemConcat value={item as TExpressionItemConcat} level={level} />}
+      {type === 'if' && <ItemIf value={item as TExpressionItemIf} level={level} />}
     </div>
   );
 };

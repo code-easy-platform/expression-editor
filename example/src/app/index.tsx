@@ -2,16 +2,54 @@ import { useMemo } from 'react';
 import { DragAndDropProvider } from 'react-use-drag-and-drop';
 import { observe } from 'react-observing';
 
-import { ExpressionEditor, TExpressionItem, TExpressionItemTypes } from 'expression-editor/src';
+import { ExpressionEditor, TExpressionItem } from 'expression-editor/src';
 import './../styles.css';
 
 
 export const App = () => {
   const values = useMemo(() => {
-    return observe<TExpressionItem<TExpressionItemTypes>>({
-      type: observe('text'),
-      value: observe('Texto'),
+    return observe<TExpressionItem<'if'>>({
+      type: observe('if'),
       id: observe(crypto.randomUUID()),
+      value: observe([
+        {
+          value: observe(true),
+          type: observe('boolean'),
+          id: observe(crypto.randomUUID()),
+        },
+        {
+          type: observe('concat'),
+          id: observe(crypto.randomUUID()),
+          value: observe([
+            {
+              type: observe('text'),
+              value: observe('Paulo'),
+              id: observe(crypto.randomUUID()),
+            },
+            {
+              type: observe('text'),
+              value: observe('Souza'),
+              id: observe(crypto.randomUUID()),
+            },
+          ]),
+        } satisfies TExpressionItem<'concat'>,
+        {
+          type: observe('concat'),
+          id: observe(crypto.randomUUID()),
+          value: observe([
+            {
+              type: observe('text'),
+              value: observe('Juca'),
+              id: observe(crypto.randomUUID()),
+            },
+            {
+              type: observe('text'),
+              value: observe('Gonçalves'),
+              id: observe(crypto.randomUUID()),
+            },
+          ]),
+        } satisfies TExpressionItem<'concat'>,
+      ]),
     });
   }, []);
 

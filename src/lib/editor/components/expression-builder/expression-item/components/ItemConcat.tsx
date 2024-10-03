@@ -40,9 +40,9 @@ export const ItemConcat = ({ value: valueObservable, level }: IItemConcatProps) 
       {value.length > 0 && (
         <span
           style={{ marginLeft: paddingLeft }}
-          className='pointer-events-none min-w-8 min-h-4 flex items-center justify-center rounded-full -mt-6 opacity-0 bg-yellow-500/50 hover:bg-yellow-500 group-hover/concat:mt-0 group-hover/concat:opacity-100 group-hover/concat:pointer-events-auto transition-all'
+          className='pointer-events-none min-w-8 min-h-4 flex items-center justify-center rounded-full -mt-6 opacity-0 group-hover/concat:opacity-50 hover:group-hover/concat:opacity-100 group-hover/concat:mt-0 group-hover/concat:pointer-events-auto transition-all'
         >
-          <VscAdd size={14} className='pointer-events-none' />
+          <VscAdd size={14} className='pointer-events-none' /> add
         </span>
       )}
       {value.length === 0 && (
