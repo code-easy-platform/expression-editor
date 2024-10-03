@@ -23,7 +23,7 @@ export const ItemNumber = ({ value: valueObservable }: IItemNumberProps) => {
     <div
       onClick={() => setIsEditing(true)}
       data-editing={isEditing}
-      className='focus-within:border-blue-500 cursor-pointer data-[editing=true]:cursor-text hover:border-blue-500 flex border border-transparent px-2.5 rounded-full w-min'
+      className='focus-within:outline-blue-500 cursor-pointer data-[editing=true]:cursor-text hover:outline-blue-500 flex outline outline-transparent px-2.5 rounded-full w-min'
     >
       {!isEditing && (
         <span

@@ -22,7 +22,7 @@ export const ItemText = ({ value: valueObservable }: IItemTextProps) => {
   return (
     <div
       onClick={() => setIsEditing(true)}
-      className='cursor-pointer focus-within:border-yellow-500 data-[editing=true]:cursor-text hover:border-yellow-500 flex border border-transparent px-1 rounded-full w-min'
+      className='cursor-pointer focus-within:outline-yellow-500 data-[editing=true]:cursor-text hover:outline-yellow-500 flex outline outline-transparent px-1 rounded-full w-min'
     >
       <span className='pointer-events-none opacity-50 text-yellow-500'>"</span>
 
