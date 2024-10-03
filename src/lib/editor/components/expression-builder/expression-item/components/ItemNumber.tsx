@@ -28,7 +28,7 @@ export const ItemNumber = ({ value: valueObservable }: IItemNumberProps) => {
       {!isEditing && (
         <span
           style={{ minWidth: width, width, maxWidth: width }}
-          className='flex-1 line-clamp-1 break-all font-mono text-center text-blue-500 selection:bg-blue-500/50'
+          className='flex-1 line-clamp-1 break-all font-mono text-center text-blue-500 select-none'
         >
           {value}
         </span>

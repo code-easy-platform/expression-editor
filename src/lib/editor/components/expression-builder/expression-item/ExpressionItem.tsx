@@ -1,12 +1,14 @@
 import { IObservable, useObserverValue } from 'react-observing';
 
+import { TExpressionItem, TExpressionItemBoolean, TExpressionItemNumber, TExpressionItemText, TExpressionItemTypes, TExpressionItemUndefined } from '../../../types';
+import { ItemUndefined } from './components/ItemUndefined';
+import { ItemBoolean } from './components/ItemBoolean';
 import { ItemNumber } from './components/ItemNumber';
-import { TExpressionItem } from '../../../types';
 import { ItemText } from './components/ItemText';
 
 
 interface IExpressionItemProps {
-  value: IObservable<TExpressionItem>;
+  value: IObservable<TExpressionItem<TExpressionItemTypes>>;
 }
 export const ExpressionItem = ({ value }: IExpressionItemProps) => {
   const item = useObserverValue(value);
@@ -15,8 +17,10 @@ export const ExpressionItem = ({ value }: IExpressionItemProps) => {
 
   return (
     <div className=''>
-      {type === 'text' && <ItemText value={item} />}
-      {type === 'number' && <ItemNumber value={item} />}
+      {type === 'text' && <ItemText value={item as TExpressionItemText} />}
+      {type === 'number' && <ItemNumber value={item as TExpressionItemNumber} />}
+      {type === 'boolean' && <ItemBoolean value={item as TExpressionItemBoolean} />}
+      {type === 'undefined' && <ItemUndefined value={item as TExpressionItemUndefined} />}
     </div>
   );
 };

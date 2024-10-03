@@ -10,7 +10,8 @@ export const App = () => {
   const values = useMemo(() => {
     return observe<TExpressionItem<'text'>>({
       type: observe('text'),
-      value: observe('123'),
+      value: observe('text'),
+      id: observe(crypto.randomUUID()),
     });
   }, []);
 
