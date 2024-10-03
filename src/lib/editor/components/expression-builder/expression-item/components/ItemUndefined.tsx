@@ -18,10 +18,10 @@ export const ItemUndefined = ({ value: valueObservable }: IItemUndefinedProps) =
 
 
   return (
-    <div className='focus-within:outline-blue-500 cursor-pointer data-[editing=true]:cursor-text hover:outline-blue-500 flex outline outline-transparent px-2.5 rounded-full w-min'>
+    <div className='focus-within:outline-blue-500/20 cursor-pointer data-[editing=true]:cursor-text hover:outline-blue-500 focus-within:hover:outline-blue-500/20 flex outline outline-transparent rounded-full w-min'>
       <span
         style={{ minWidth: width, width, maxWidth: width }}
-        className='flex-1 line-clamp-1 break-all font-mono text-center text-blue-500 select-none'
+        className='flex-1 line-clamp-1 break-all text-center text-blue-500 select-none'
       >
         undefined
       </span>

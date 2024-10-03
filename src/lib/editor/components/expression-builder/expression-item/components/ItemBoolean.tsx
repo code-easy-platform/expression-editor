@@ -20,11 +20,11 @@ export const ItemBoolean = ({ value: valueObservable }: IItemBooleanProps) => {
   return (
     <div
       onDoubleClick={() => setValue(!value)}
-      className='focus-within:outline-blue-500 cursor-pointer data-[editing=true]:cursor-text hover:outline-blue-500 flex outline outline-transparent px-2.5 rounded-full w-min'
+      className='focus-within:outline-blue-500/20 cursor-pointer data-[editing=true]:cursor-text hover:outline-blue-500 flex outline outline-transparent rounded-full w-min'
     >
       <span
         style={{ minWidth: width, width, maxWidth: width }}
-        className='flex-1 line-clamp-1 break-all font-mono text-center text-blue-500 select-none'
+        className='flex-1 line-clamp-1 break-all text-center text-blue-500 select-none'
       >
         {value ? 'true' : 'false'}
       </span>

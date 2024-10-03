@@ -2,9 +2,10 @@ import { DragAndDropProvider } from "react-use-drag-and-drop";
 
 import { IExpressionEditorContextProps, ExpressionEditorContextProvider } from './ExpressionEditorContext';
 import { ExpressionBuilder, ExpressionToolbox } from './components';
+import { TExpressionItemTypes } from './types';
 
 
-interface IExpressionEditorProps extends Pick<IExpressionEditorContextProps, 'value'> {
+interface IExpressionEditorProps extends Pick<IExpressionEditorContextProps<TExpressionItemTypes>, 'value'> {
 }
 export function ExpressionEditor({ ...props }: IExpressionEditorProps) {
   return (
@@ -12,7 +13,7 @@ export function ExpressionEditor({ ...props }: IExpressionEditorProps) {
       <ExpressionEditorContextProvider {...props}>
 
 
-        <div className='flex-1 flex max-h-[calc(80vh-92px)]'>
+        <div className='flex-1 flex'>
           <ExpressionToolbox />
 
           <ExpressionBuilder />

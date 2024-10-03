@@ -1,5 +1,7 @@
 import { useRef } from 'react';
+import { useObserverValue } from 'react-observing';
 import { useDrop } from 'react-use-drag-and-drop';
+
 import { useExpressionEditorContext } from '../../ExpressionEditorContext';
 import { ExpressionItem } from './expression-item/ExpressionItem';
 
@@ -9,7 +11,7 @@ interface IExpressionBuilderProps {
 export const ExpressionBuilder = ({ }: IExpressionBuilderProps) => {
   const boardRef = useRef<HTMLDivElement>(null);
 
-  const { value } = useExpressionEditorContext();
+  const value = useObserverValue(useExpressionEditorContext().value);
 
 
   const [{ isDraggingOver, isDraggingOverCurrent }] = useDrop({
@@ -25,9 +27,9 @@ export const ExpressionBuilder = ({ }: IExpressionBuilderProps) => {
     <div
       ref={boardRef}
       data-dragging-over={isDraggingOverCurrent}
-      className='p-1 flex-1 data-[dragging-over=true]:bg-paper'
+      className='p-1 flex-1 overflow-auto font-mono data-[dragging-over=true]:bg-paper'
     >
-      <ExpressionItem value={value} />
+      <ExpressionItem item={value} />
     </div>
   );
 };

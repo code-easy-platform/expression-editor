@@ -21,14 +21,15 @@ export const ItemNumber = ({ value: valueObservable }: IItemNumberProps) => {
 
   return (
     <div
-      onClick={() => setIsEditing(true)}
       data-editing={isEditing}
-      className='focus-within:outline-blue-500 cursor-pointer data-[editing=true]:cursor-text hover:outline-blue-500 flex outline outline-transparent px-2.5 rounded-full w-min'
+      data-empty={String(value).length === 0}
+      onClick={() => setIsEditing(true)}
+      className='focus-within:outline-blue-500/20 cursor-pointer data-[editing=true]:cursor-text hover:outline-blue-500 focus-within:hover:outline-blue-500/20 flex outline outline-transparent data-[empty=true]px-2.5 rounded-full w-min'
     >
       {!isEditing && (
         <span
           style={{ minWidth: width, width, maxWidth: width }}
-          className='flex-1 line-clamp-1 break-all font-mono text-center text-blue-500 select-none'
+          className='flex-1 line-clamp-1 break-all text-center text-blue-500 select-none'
         >
           {value}
         </span>
@@ -44,7 +45,7 @@ export const ItemNumber = ({ value: valueObservable }: IItemNumberProps) => {
           onBlur={() => setIsEditing(false)}
           onChange={e => setValue(e.target.valueAsNumber)}
           style={{ minWidth: width, width, maxWidth: width }}
-          className='bg-transparent p-0 focus:ring-0 flex-1 font-mono text-center rounded-none max-h-min hide-number-spin text-blue-500 selection:bg-blue-500/50'
+          className='bg-transparent p-0 focus:ring-0 flex-1 text-center rounded-none max-h-min hide-number-spin text-blue-500 selection:bg-blue-500/50'
         />
       )}
     </div>
