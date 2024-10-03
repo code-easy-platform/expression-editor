@@ -9,9 +9,10 @@ import { ItemText } from './components/ItemText';
 
 
 interface IExpressionItemProps {
+  level: number;
   item: TExpressionItem<TExpressionItemTypes>;
 }
-export const ExpressionItem = ({ item }: IExpressionItemProps) => {
+export const ExpressionItem = ({ item, level }: IExpressionItemProps) => {
   const type = useObserverValue(item.type);
 
 
@@ -21,7 +22,7 @@ export const ExpressionItem = ({ item }: IExpressionItemProps) => {
       {type === 'number' && <ItemNumber value={item as TExpressionItemNumber} />}
       {type === 'boolean' && <ItemBoolean value={item as TExpressionItemBoolean} />}
       {type === 'undefined' && <ItemUndefined value={item as TExpressionItemUndefined} />}
-      {type === 'concat' && <ItemConcat value={item as TExpressionItemConcat} />}
+      {type === 'concat' && <ItemConcat value={item as TExpressionItemConcat} level={level} />}
     </div>
   );
 };

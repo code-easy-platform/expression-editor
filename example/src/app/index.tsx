@@ -2,48 +2,16 @@ import { useMemo } from 'react';
 import { DragAndDropProvider } from 'react-use-drag-and-drop';
 import { observe } from 'react-observing';
 
-import { ExpressionEditor, TExpressionItem } from 'expression-editor/src';
+import { ExpressionEditor, TExpressionItem, TExpressionItemTypes } from 'expression-editor/src';
 import './../styles.css';
 
 
 export const App = () => {
   const values = useMemo(() => {
-    return observe<TExpressionItem<'concat'>>({
-      type: observe('concat'),
+    return observe<TExpressionItem<TExpressionItemTypes>>({
+      type: observe('text'),
+      value: observe('Texto'),
       id: observe(crypto.randomUUID()),
-      value: observe([
-        {
-          type: observe('text'),
-          value: observe('Texto 1'),
-          id: observe(crypto.randomUUID()),
-        },
-        {
-          type: observe('text'),
-          value: observe('Texto 2'),
-          id: observe(crypto.randomUUID()),
-        },
-        {
-          type: observe('concat'),
-          id: observe(crypto.randomUUID()),
-          value: observe([
-            {
-              value: observe(123),
-              type: observe('number'),
-              id: observe(crypto.randomUUID()),
-            },
-            {
-              value: observe(true),
-              type: observe('boolean'),
-              id: observe(crypto.randomUUID()),
-            },
-            {
-              value: observe(undefined),
-              type: observe('undefined'),
-              id: observe(crypto.randomUUID()),
-            },
-          ]),
-        } satisfies TExpressionItem<'concat'>
-      ]),
     });
   }, []);
 
