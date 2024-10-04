@@ -13,11 +13,7 @@ export const SubGroup = ({ items, title, type = 'multiline' }: ISubGroupProps) =
 
       <div data-type={type} className='flex flex-col gap-1 items-start data-[type=multiline]:flex-row data-[type=multiline]:flex-wrap'>
         {items.map(item => (
-          <Item
-            key={item.name}
-            name={item.name}
-            color={item.color}
-          />
+          <Item key={item.id} {...item} />
         ))}
 
         {items.length === 0 && (
