@@ -5,7 +5,7 @@ import { ExpressionBuilder, ExpressionToolbox } from './components';
 import { TExpressionItemTypes } from './types';
 
 
-interface IExpressionEditorProps extends Pick<IExpressionEditorContextProps<TExpressionItemTypes>, 'value'> {
+interface IExpressionEditorProps extends Pick<IExpressionEditorContextProps<TExpressionItemTypes>, 'value' | 'getDetails'> {
 }
 export function ExpressionEditor({ ...props }: IExpressionEditorProps) {
   return (

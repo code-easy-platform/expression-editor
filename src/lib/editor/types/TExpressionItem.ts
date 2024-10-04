@@ -1,7 +1,7 @@
 import { IObservable } from 'react-observing';
 
 
-export type TExpressionItemTypes = 'text' | 'number' | 'boolean' | 'undefined' | 'concat' | 'if';
+export type TExpressionItemTypes = 'text' | 'number' | 'boolean' | 'undefined' | 'concat' | 'if' | 'variable';
 
 
 export type TExpressionItemText = {
@@ -44,8 +44,14 @@ export type TExpressionItemIf = {
   ]>;
 }
 
+export type TExpressionItemVariable = {
+  id: IObservable<string>;
+  value: IObservable<string>;
+  type: IObservable<'variable'>;
+}
 
-export type TExpressionItem<T extends TExpressionItemTypes = 'text'> = T extends 'text'
+
+export type TExpressionItem<T extends TExpressionItemTypes = TExpressionItemTypes> = T extends 'text'
   ? TExpressionItemText
   : T extends 'number'
   ? TExpressionItemNumber
@@ -57,4 +63,6 @@ export type TExpressionItem<T extends TExpressionItemTypes = 'text'> = T extends
   ? TExpressionItemConcat
   : T extends 'if'
   ? TExpressionItemIf
+  : T extends 'variable'
+  ? TExpressionItemVariable
   : undefined

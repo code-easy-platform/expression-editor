@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { DragAndDropProvider } from 'react-use-drag-and-drop';
 import { observe } from 'react-observing';
 
@@ -8,7 +8,16 @@ import './../styles.css';
 
 export const App = () => {
   const values = useMemo(() => {
-    return observe<TExpressionItem<TExpressionItemTypes> | undefined>(undefined);
+    return observe<TExpressionItem<TExpressionItemTypes> | undefined>({
+      type: observe('variable'),
+      id: observe(crypto.randomUUID()),
+      value: observe(crypto.randomUUID()),
+    });
+  }, []);
+
+
+  const handleGetDetails = useCallback(() => {
+    return { name: observe('Entidade.Person.Name') };
   }, []);
 
 
@@ -22,6 +31,7 @@ export const App = () => {
           <div className='w-[60vw] h-[90vh] bg-background rounded overflow-clip p-2'>
             <ExpressionEditor
               value={values}
+              getDetails={handleGetDetails}
             />
           </div>
         </div>
