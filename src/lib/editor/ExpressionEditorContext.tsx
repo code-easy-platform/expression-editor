@@ -5,7 +5,7 @@ import { TExpressionItem, TExpressionItemTypes } from './types/TExpressionItem';
 
 
 export interface IExpressionEditorContextProps<T extends TExpressionItemTypes> {
-  value: IObservable<TExpressionItem<T>>;
+  value: IObservable<TExpressionItem<T> | undefined>;
 }
 
 const ExpressionEditorContext = createContext({} as IExpressionEditorContextProps<TExpressionItemTypes>);

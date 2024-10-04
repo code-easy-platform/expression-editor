@@ -29,7 +29,7 @@ export const ExpressionBuilder = ({ }: IExpressionBuilderProps) => {
       data-dragging-over={isDraggingOverCurrent}
       className='p-1 flex-1 overflow-auto font-mono data-[dragging-over=true]:bg-paper'
     >
-      <ExpressionItem item={value} level={1} />
+      {value && <ExpressionItem item={value} level={1} />}
     </div>
   );
 };
